@@ -1,0 +1,14 @@
+$border-radius: 10px;
+
+@mixin btn {
+    border: none;
+    border-radius: $border-radius;
+    background-color: $green;
+    color: $white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
