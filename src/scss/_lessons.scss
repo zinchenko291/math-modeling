@@ -1,0 +1,64 @@
+$margin-vertical: 15px;
+
+div.btnWrapper {
+    text-align: center;
+    margin: $margin-vertical;
+    a {font-size: 30px;}
+}
+main {
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 25px;
+        text-transform: uppercase;
+    }
+}
+
+code {
+    display: block;
+    margin: $margin-vertical 0;
+    background: #fff;
+    padding: 10px;
+    border-radius: $border-radius;
+    font-family: "JetBrainsMono";
+    font-size: 17px;
+
+    pre {
+        font-family: "JetBrainsMono";
+        font-size: 17px;
+    }
+}
+p {
+    margin: $margin-vertical 0;
+}
+
+.grey {
+    color: $darkGrey;
+}
+
+table, th, td {
+    border: 1px solid $black;
+    border-collapse: collapse;
+    background-color: $white;
+
+    padding: 10px;
+}
+sub {
+    font-size: 17px;
+}
+
+img.formula {
+    display: inline;
+    height: 1em;
+
+    &.min7 {
+        height: .7em;
+    }
+    &.min8 {
+        height: .8em;
+    }
+    &.min9 {
+        height: .9em;
+    }
+}

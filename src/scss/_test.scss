@@ -1,0 +1,40 @@
+table, th, td {
+    border: 1px solid $black;
+    border-collapse: collapse;
+    background-color: $white;
+
+    padding: 10px;
+}
+.question {
+    margin: 20px 0;   
+}
+
+@mixin questInputFont {
+    font-family: "JetBrainsMono", sans-serif;
+    font-size: 17px;
+}
+input.questionInput, select.questionInput  {
+    border-radius: 5px;
+    background-color: $white;
+    border: 1px solid $darkGrey;
+    @include questInputFont();
+}
+input.questionInput {
+    padding: 0 5px;
+}
+input.questionInput.wrong, select.questionInput.wrong {
+    border: 2px solid $red;
+    border-radius: 5px;
+    &:focus-visible {
+        outline: 1px solid rgba($color: $red, $alpha: 0.3);
+    }
+}
+tr.wrong {
+    td {
+        background-color: $whiteRed;
+    }
+}
+span.help, summary.help {
+    margin: none;
+    color: $darkGrey;
+}

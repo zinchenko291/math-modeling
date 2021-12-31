@@ -1,0 +1,128 @@
+mixin list
+    option ---
+    option увеличивается
+    option уменьшается
+    option сначала увеличивается, затем уменьшается
+    option сначала уменьшается, затем увеличивается
+
+doctype html
+html(lang="en")
+    head
+        include ./includes/head.pug
+        title Коробка - тест
+    body 
+        include ./includes/header.pug
+        main.container
+            ol
+                li.question 
+                    p Проследите, как изменяется с увеличением выреза:
+                    ul
+                        li длина стороны дна 
+                            select.questionInput(data-answer="c09d854f4fbd684f26386d51cb76620cebdd83e97c6c4f04fb2b5267662cd694") #[+list]<br>
+                        li площадь дна 
+                            select.questionInput(data-answer="c09d854f4fbd684f26386d51cb76620cebdd83e97c6c4f04fb2b5267662cd694") #[+list]<br>
+                        li объём коробки 
+                            select.questionInput(data-answer="45e438e5fe6f76a12a8ba308332cb7e84f384c2adb6263a9e01e04d1e8afb43d") #[+list]
+                li.question
+                    p Найдите наибольший объём коробки и соответствующий вырез, при:
+                    table
+                        tr
+                            td(colspan=3) Шаг изменения выреза = 1
+                        tr
+                            td Длина стороны листа
+                            td Вырез
+                            td Объём
+                        tr
+                            td 40
+                            td
+                                input.questionInput(type="text" data-answer="7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451")
+                            td
+                                input.questionInput(type="text" data-answer="c1f713b07141998057941915d7beacaa0efe62e1e3e0e0ded7f03b981759ec95")
+                    span.help Введите целое число без дробной части
+                li.question
+                    p Найдите наибольший объём коробки и соответствующий вырез, при:
+                    table
+                        tr
+                            td(colspan=3) Шаг изменения выреза = 1
+                        tr
+                            td Длина стороны листа
+                            td Вырез
+                            td Объём
+                        tr
+                            td 40
+                            td
+                                input.questionInput(type="text" data-answer="7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451")
+                            td
+                                input.questionInput(type="text" data-answer="c1f713b07141998057941915d7beacaa0efe62e1e3e0e0ded7f03b981759ec95")
+                        tr
+                            td 60
+                            td
+                                input.questionInput(type="text" data-answer="4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5")
+                            td
+                                input.questionInput(type="text" data-answer="2570901c76653e578fecf066b5fc3fa1619f1a051e928e39797bab1b1342bf40")
+                        tr
+                            td 80
+                            td
+                                input.questionInput(type="text" data-answer="3fdba35f04dc8c462986c992bcf875546257113072a909c162f7e470e581e278")
+                            td
+                                input.questionInput(type="text" data-answer="b5ee7fadca909a41e9d7cfd30bec010979f938f1930aceb48fc3101a7709c8e6")
+                    span.help Введите целое число без дробной части
+                li.question
+                    p Найдите наибольший объём коробки и соответствующий вырез, при:
+                    table
+                        tr
+                            td(colspan=3) Шаг изменения выреза = 0.3
+                        tr
+                            td Длина стороны листа
+                            td Вырез
+                            td Объём
+                        tr
+                            td 40
+                            td
+                                input.questionInput(type="text" data-answer="63d1a279ef708611d2d7b3f2f1759471d5c29badb6238012e97265028aa09444")
+                            td
+                                input.questionInput(type="text" data-answer="a99bc772aa92390a11d9e4b8fc870cdbfc8566946eb437dd8212801e601a33cd")
+                        tr
+                            td 60
+                            td
+                                input.questionInput(type="text" data-answer="b41b81976c2f1f8b7aec5281ddb04656360f46c7ffd232dde0d91ed73af96bba")
+                            td
+                                input.questionInput(type="text" data-answer="18ccef5ab9f07595b3141f79571d5776aa87ef7e14795cd75e8f86a56f368912")
+                        tr
+                            td 80
+                            td
+                                input.questionInput(type="text" data-answer="c89e092e57afbc04cd0fe199afcf04d9e79e330773cda6632adb908699f1ec14")
+                            td
+                                input.questionInput(type="text" data-answer="13f76bb0b140b089ab021808324d248de32c9072b7f03854306732be5883b64b")
+                    span.help Введите число из консоли
+                li.question
+                    p Подберите размер исходного картонного листа, если дан максимальный объём коробки:
+                    table
+                        tr
+                            td Длина стороны листа
+                            td Вырез
+                            td Объём
+                        tr
+                            td
+                                input.questionInput(type="text" data-type="box")
+                            td
+                                input.questionInput.b(type="text" data-type="box" data-volume="3500")
+                            td 3500
+                        tr
+                            td
+                                input.questionInput(type="text" data-type="box")
+                            td
+                                input.questionInput.b(type="text" data-type="box" data-volume="5000")
+                            td 5000
+                        tr
+                            td
+                                input.questionInput(type="text" data-type="box")
+                            td
+                                input.questionInput.b(type="text" data-type="box" data-volume="12000")
+                            td 12000
+                    details
+                        summary.help Подсказка
+                        span.help В этом задании можно использовать метод половинного деления. 
+            button.big#checkAnswers Проверить
+    script(src="js/sha256.js") 
+    script(src="js/test.js") 

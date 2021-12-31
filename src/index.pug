@@ -1,92 +1,29 @@
 doctype html
 html(lang="ru")
     head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="css/style.css")
+        include ./includes/head.pug
         title Математическое моделирование
     body
-        header
-            a(href="index.html")
-                h1 Математическое моделирование
+        include includes/header.pug
         main.container
             nav
                 span Вид работы: 
                     button#lessonsBtn.group-btn.active Урок
                     button#worksBtn.group-btn Самостоятельная работа
-            - 
-                let lessons_items = [
-                    [
-                        'Коробка', 
-                        'Найдите, при каком размере выреза коробка будет иметь максимальный объём.', 
-                        'box.html'
-                    ],
-                    [
-                        'Обои', 
-                        'Помогите покупателям быстро определить необходимое количество обоев.', 
-                        'box.html'
-                    ],
-                    [
-                        'Сбер касса', 
-                        'Проведите исследование очереди из бабушек у сбер кассы.', 
-                        'box.html'
-                    ],
-                    [
-                        'Стихотворение', 
-                        'Предлагается исследовать ситуацию и предложить реальные способы ускорения процесса заучивания стихотворения.', 
-                        'box.html'
-                    ],
-                    [
-                        'Дачник и собака', 
-                        'Исследовать процесс движения объектов: человека и собаки. Установить связь между расстояниями, пройденными объектами за одно и то же время. Определить путь, который пробежала собака.', 
-                        'box.html'
-                    ]
-                ]
-                let works_items = [
-                    [
-                        'Продукты для похода', 
-                        'Рассчитать необходимое количество продуктов на весь поход для 1 человека и для всей группы.', 
-                        'box.html'
-                    ],
-                    [
-                        'Награда', 
-                        'Сколько должен индрусский царь Шерам изобретателю шахмат из древней легенды?', 
-                        'box.html'
-                    ],
-                    [
-                        'Концентрация раствора', 
-                        'Составьте таблицу, по которой можно определить, как изменяется исходная концентрация при добавлении 1, 2, 3 и т. д. частей воды.', 
-                        'box.html'
-                    ],
-                    [
-                        'Буратино и папа Карло', 
-                        'Постройте модель изменения капитала в течение нескольких недель.', 
-                        'box.html'
-                    ],
-                    [
-                        'График тренировки', 
-                        'Исследуйте график тренеровок, состовляемый по правилам.', 
-                        'box.html'
-                    ],
-                    [
-                        'Аквариум', 
-                        'Сколько минут времени он затратит на переселение рыбок?', 
-                        'box.html'
-                    ]
-                ]
+            include includes/lessons.pug
             #lessonsList.items.row.row-cols-1.row-cols.sm-1.row-cols.md-2.row-cols-lg-3
                 for item in lessons_items
                     .wrapper
                         .item
                             h2.header= item[0]
                             p.description= item[1]
-                            a(href= item[2]) Приступить
+                            a(href= item[2]+".html").btn Урок
+                            a(href= item[2]+"Test.html").btn Тест
             #worksList.items.row.row-cols-1.row-cols.sm-1.row-cols.md-2.row-cols-lg-3.hidden
                 for item in works_items
                     .wrapper
                         .item
                             h2.header= item[0]
                             p.description= item[1]
-                            a(href= item[2]) Приступить
+                            a(href= item[2]).btn Приступить
         script(src="js/index.js")
