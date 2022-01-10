@@ -24,16 +24,17 @@ const checkAnswers = (e) => {
                 } else {
                     item.classList.add("wrong");
                 }
-            } else {
+            } 
+            else {
                 switch (item.dataset.type) {
                     case "box":
                         if (!item.classList.contains("b")) {
                             totalQuestions--;
-                        } else{
+                        } 
+                        else{
                             const f = (a, b) => {return a*a*b - 4*a*b*b + 4*b*b*b}
                             let error = 5;
                             let V = f(Number(arr[i-1].value), Number(item.value))
-                            console.log(V);
                             if ( Number(item.dataset.volume) - error <= V && V <= Number(item.dataset.volume) + error ){
                                 counter++;
                                 item.parentElement.parentElement.classList.remove("wrong");
@@ -42,9 +43,27 @@ const checkAnswers = (e) => {
                                 item.parentElement.parentElement.classList.add("wrong");
                             }
                         }
-
                         break;
-                
+                    
+                    case "wallpapers":
+                        if (item.id != "N") {
+                            totalQuestions--;
+                        } 
+                        else {
+                            const f = (a, b, h) => {return Math.ceil((68/189) * h * (a + b)) + 1}
+                            let a = Number(document.querySelector("#a").value);
+                            let b = Number(document.querySelector("#b").value);
+                            let h = Number(document.querySelector("#h").value);
+                            if (f(a, b, h) == Number(item.value)) {
+                                counter++;
+                                item.parentElement.parentElement.classList.remove("wrong");
+                            } 
+                            else {
+                                item.parentElement.parentElement.classList.add("wrong");
+                            }
+                        }
+                        break;
+
                     default:
                         break;
                 }

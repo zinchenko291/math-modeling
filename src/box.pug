@@ -25,24 +25,27 @@ html(lang="ru")
                     td <b>значение</b>
                 tr 
                     td Картонный лист
-                    td <span>Длина стороны <img class="formula min7" src="images/a.svg" alt="a"></span>
+                    td Длина стороны #[span.math a]
                     td Исходные данные
                 tr 
                     td Вырез
-                    td <span>Шаг изменения <img class="formula" src="images/Greek_uc_delta.svg" alt="∆"/><img class="formula" src="images/b.svg" alt="b"/></span><br><span>Размер <img class="formula" src="images/b.svg" alt="b"/>
+                    td Шаг изменения #[span.math ∆b]<br>Размер #[span.math b]
                     td Исходные данные<br>Расчетные данные
                 tr 
                     td Коробка 
-                    td <span> Длина стороны дна <img class="formula min7" src="images/c.svg" alt="c"/></span><br><span>Площадь дна <img class="formula min9" src="images/S.svg" alt="S"/></span><br><span>Объём <img class="formula min7" src="images/V.svg" alt="V"/></span>
+                    td.
+                        Длина стороны дна #[span.math c]<br>
+                        Площадь дна #[span.math S]<br>
+                        Объём #[span.math V]
                     td Расчетные данные<br>Расчетные данные<br>Результаты
             
             p Для вывода формул математической модели составим геометрическую модель в виде чертежа с указанием исследуемых характеристик объекта.
             p Расчетные параметры объекта определяются по формулам:
             p 
-                |<img class="formula min9" src="images/equationC.svg" alt="c = a - 2b"> — длина стороны дна;<br>
-                |<img class="formula" src="images/equationS.svg" alt="S = c^2"> — площадь дна;<br>
-                |<img class="formula min8" src="images/equationV.svg" alt="V = Sb"> — объём.
-            p Здесь, <img class="formula min7" src="images/a.svg" alt="a"> — длина стороны картонного листа, <img class="formula" src="images/b.svg" alt="b"/> — размер выреза. Первоначальный размер выреза <img class="formula" src="images/b0.svg" alt="b_0"/>. Последующие размеры выреза определяются по формуле <img class="formula" src="images/bi+1.svg" alt="b_{i+1} = b_i + ∆b">
+                |#[span.math c = a - 2b] — длина стороны дна;<br>
+                |#[span.math S = c#[sup 2]] — площадь дна;<br>
+                |#[span.math V = Sb] — объём.
+            p Здесь, #[span.math a] — длина стороны картонного листа, #[span.math b] — размер выреза. Первоначальный размер выреза #[span.math b#[sub 0] = 0]. Последующие размеры выреза определяются по формуле #[span.math b#[sub i+1] = b#[sub i] + ∆b]
 
             h4 КОМПЬЮТЕРНАЯ МОДЕЛЬ
             p Для моделирования будем использовать язык моделирования python.
