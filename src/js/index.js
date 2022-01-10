@@ -18,7 +18,7 @@ lessonsBtn.addEventListener("click", (e) => {
 
     lessonsList.classList.remove("hidden");
     worksList.classList.add("hidden");
-    header.style = "background-color: " + colors.green;
+    header.classList.remove("work");
 })
 
 worksBtn.addEventListener("click", (e) => {
@@ -27,5 +27,5 @@ worksBtn.addEventListener("click", (e) => {
 
     lessonsList.classList.add("hidden");
     worksList.classList.remove("hidden");
-    header.style = "background-color: " + colors.yellow;
+    header.classList.add("work");
 })

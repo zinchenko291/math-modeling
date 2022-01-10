@@ -77,6 +77,11 @@ const fonts = () => {
 }
 exports.fonts = fonts;
 
+const favicons = () => {
+    return gulp.src('src/favicon/*.{png, ico, svg, webmanifest, xml}')
+    .pipe(gulp.dest('dist/'));
+}
+exports.favicons = favicons;
 
 const watchFiles = () => {
     gulp.watch('./src/**/*.pug', gulp.series(html));
@@ -87,5 +92,5 @@ const watchFiles = () => {
 
 exports.watch = watchFiles;
 
-exports.build = gulp.series(clean, fonts, html, css, js, image);
+exports.build = gulp.series(clean, fonts, html, css, js, image, favicons);
 exports.server = gulp.parallel(browser_sync, watchFiles);
