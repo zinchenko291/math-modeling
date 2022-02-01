@@ -1,0 +1,38 @@
+mixin list
+    option ---
+    option увеличивается
+    option уменьшается
+
+doctype html
+html(lang="en")
+    head
+        include ./includes/head.pug
+        title Коробка - тест
+    body 
+        include ./includes/header.pug
+        main.container
+            ol
+                li.question
+                    p Сколько времени понадобилось бы мальчику, чтобы выучить все стихотворение?
+                    p Ответ: 
+                        input.questionInput(data-answer="cbd082c798423a4870c866e8f0b82abfa633da424260c3c641bccad0d124e055")
+                    span.help Записать в виде H:MM:SS
+                li.question
+                    p Из скольких строк (максимум) должно состоять стихотворение, если учительница мальчика утверждает, что его знаний хватает не более чем на 3 часа, а до школы бежать 15 мин.?
+                    p Ответ: 
+                        input.questionInput(data-answer="624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4")
+                li.question
+                    p Сколько строк можно успеть выучить до начала «мультика», если до него осталось 45 мин.?
+                    p Ответ: 
+                        input.questionInput(data-answer="4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3")
+                li.question
+                    p Как влияет время заучивания 1-й строки на общее время запоминания стихотворения? Как меняется суммарное время при увеличении времени на заучивание 1-й строки?
+                    p Ответ: 
+                        select.questionInput(data-answer="1468f9a380bdb08fea9553a0bb53285522514d189ca99790217c512ba2544e21") #[+list]
+                li.question
+                    p Как влияет концентрация внимания (уменьшение D%) на общее время запоминания стихотворения?
+                    p Ответ: 
+                        select.questionInput(data-answer="c09d854f4fbd684f26386d51cb76620cebdd83e97c6c4f04fb2b5267662cd694") #[+list]
+            button.big#checkAnswers Проверить
+    script(src="js/sha256.js") 
+    script(src="js/test.js") 

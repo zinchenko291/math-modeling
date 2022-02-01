@@ -78,7 +78,7 @@ const fonts = () => {
 exports.fonts = fonts;
 
 const favicons = () => {
-    return gulp.src('src/favicon/*.{png, ico, svg, webmanifest, xml}')
+    return gulp.src('src/favicon/*.*')
     .pipe(gulp.dest('dist/'));
 }
 exports.favicons = favicons;
