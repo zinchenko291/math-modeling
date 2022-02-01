@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c"><link rel="stylesheet" href="css/style.css"><title>Стихотворение</title></head><body><header><a href="index.html"><h1>Математическое моделирование</h1></a></header><main class="container lesson"><h2>Стихотворение</h2><h3>I этап. Постановка задачи</h3><h4>Описание задачи</h4><p>Мальчик учит стихотворение из 40 строк. Чтобы запомнить первую строчку ему понадобилась всего 1 мин. На каждую следующую он тратит на 10% времени больше. Стихотворение держится в памяти нерадивого ученика не дольше трех часов, а до школы бежать 15 минут. Как организовать заучивание стихотворения?</p><h4>Цель моделирования</h4><p>Предлагается исследовать ситуацию и предложить реальные способы ускорения процесса заучивания стихотворения.</p><h3>II этап. Разработка модели</h3><h4>ИНФОРМАЦИОННАЯ МОДЕЛЬ</h4><p>Анализ объекта моделирования показывает, что эта система состоит из двух объектов: мальчика и стихотворения. Стихотворение, в свою очередь, может быть разбито на простые элементы — строки. Каждый из объектов, входящих в систему, имеет свои параметры. Связь между объектами этой системы заключается во времени заучивания стиха нерадивым учеником. Представим информационную модель в табличном виде.</p><table class="element-animation"><tr><td rowspan="2">Объект</td><td colspan="2">Параметры</td></tr><tr><td><i>название</i></td><td><i>значение</i></td></tr><tr><td>Мальчик</td><td>Процент снижения прилежания с каждой строкой <span class="math">D (%)</span><br>
+Время удерживания в памяти любой информации <span class="math">DT</span></td><td>Исходные данные<br>
+Исходные данные (константа)</td></tr><tr><td>Стихотворение</td><td>Количество строк<br>
+Суммарное время, затраченное на заучивание всего стихотворения</td><td>Исходные данные<br>Результат</td></tr><tr><td>Строка (элемент стиха)</td><td>Время на заучивание первой строки <span class="math">Т<sub>i</sub></span>
+Время заучивания <span class="math">i</span>-й строки <span class="math">Т<sub>i</sub></span>
+Суммарное время, затраченное на <span class="math">i</span> строк <span class="math">S<sub>i</sub></span></td><td>Исходные данные<br>
+Расчетные данные<br>
+Расчетные данные</td></tr><tr><td>Среда</td><td>Время бега до школы</td><td>В задаче константа</td></tr></table><p>Математическая модель связывает между собой параметры элементов системы.</p><p>Время на заучивание <span class="math">i</span>-й строки:</p><p class="center"><span class="math">T<sub>i</sub> = T<sub>i-1</sub> × (1 + ∆ (%)).</span></p><p>Суммарное время на запоминание отрывка из <span class="math">i</span> строк:</p><p class="center"><span class="math">S<sub>i</sub> = S<sub>i-1</sub> + T<sub>i</sub>. </span></p><h4>КОМПЬЮТЕРНАЯ МОДЕЛЬ</h4><p>Для моделирования будем использовать язык моделирования Python.</p><p>Для начала введём переменные.</p><pre class="element-animation"><code>learningTime = 60 # Время заучивания в секундах
+deltaTime = 1.1 # Увеличение времени в процентах
+amountOfStrings = 40 # Всего строк</code></pre><p>Пройдёмся в цикле по всем строчкам стихотворения</p><pre class="element-animation"><code>print('№ строки\tВремя заучивания(сек)\t Суммарное время') # Заголовок таблицы
+for i in range(amountOfStrings):
+    Ti = learningTime * deltaTime**i # Используем формулы геометрической прогрессии
+    Si = (Ti * deltaTime - learningTime) / (deltaTime - 1)
+    print(f'{ i + 1 }\t{ "%.2f" % Ti }\t{ "%.2f" % Si }')</code></pre><p>Сделаем вывод времени в минутах и секундах при помощи модуля Datetime</p><pre class="element-animation"><code># В начало кода вставим
+import datetime
+# В цикле добавим
+TiTime_format = str(datetime.timedelta(seconds = int(Ti)))
+SiTime_format = str(datetime.timedelta(seconds = int(Si)))
+print(f'{ i + 1 }\t{ TiTime_format }\t{ SiTime_format }')</code></pre><details><summary>Вывод программы</summary><pre>№ строки	Время заучивания(сек)	 Суммарное время
+1	0:01:00	0:00:59
+2	0:01:06	0:02:05
+3	0:01:12	0:03:18
+4	0:01:19	0:04:38
+5	0:01:27	0:06:06
+6	0:01:36	0:07:42
+7	0:01:46	0:09:29
+8	0:01:56	0:11:26
+9	0:02:08	0:13:34
+10	0:02:21	0:15:56
+11	0:02:35	0:18:31
+12	0:02:51	0:21:23
+13	0:03:08	0:24:31
+14	0:03:27	0:27:58
+15	0:03:47	0:31:46
+16	0:04:10	0:35:56
+17	0:04:35	0:40:32
+18	0:05:03	0:45:35
+19	0:05:33	0:51:09
+20	0:06:06	0:57:16
+21	0:06:43	1:04:00
+22	0:07:24	1:11:24
+23	0:08:08	1:19:32
+24	0:08:57	1:28:29
+25	0:09:50	1:38:20
+26	0:10:50	1:49:10
+27	0:11:55	2:01:05
+28	0:13:06	2:14:12
+29	0:14:25	2:28:37
+30	0:15:51	2:44:29
+31	0:17:26	3:01:56
+32	0:19:11	3:21:08
+33	0:21:06	3:42:15
+34	0:23:13	4:05:28
+35	0:25:32	4:31:01
+36	0:28:06	4:59:07
+37	0:30:54	5:30:02
+38	0:34:00	6:04:02
+39	0:37:24	6:41:26
+40	0:41:08	7:22:35</pre></details><div class="btnWrapper"><a class="btn" href="poemTest.html">Тест</a></div></main></body><script src="js/animation.js"></script></html>
